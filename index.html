@@ -6,28 +6,53 @@
     <title>🎉 Chúc mừng sinh nhật Thư 🎂</title>
     <style>
       body {
-        background-color: #87CEEB; /* xanh da trời */
+        background: linear-gradient(to bottom, #87CEEB, #b3e5ff);
         font-family: "Segoe UI", Arial, sans-serif;
         text-align: center;
         color: #fff;
         margin: 0;
         padding: 50px 20px;
+        overflow: hidden;
       }
+
       h1 {
         font-size: 2.5em;
         margin-bottom: 10px;
       }
+
       p {
         font-size: 1.3em;
         line-height: 1.6;
         max-width: 600px;
         margin: 0 auto 20px;
       }
+
       .emoji {
         font-size: 2em;
       }
+
       .heart {
         color: #ffb6c1;
+      }
+
+      /* Các icon bay */
+      .floating {
+        position: absolute;
+        bottom: -50px;
+        animation: floatUp linear infinite;
+        opacity: 0.8;
+        user-select: none;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-110vh) scale(1.5);
+          opacity: 0;
+        }
       }
     </style>
   </head>
@@ -42,5 +67,22 @@
       Lần nữa, chúc Thư sinh nhật vui vẻ nhá 🫶🎈
     </p>
     <div class="emoji">🎂🎁🎉</div>
+
+    <script>
+      // Danh sách emoji bay
+      const icons = ["🎈", "🎉", "💖", "🎂", "✨", "🫶", "🎁", "🌸", "💐"];
+      const numIcons = 25;
+
+      for (let i = 0; i < numIcons; i++) {
+        const icon = document.createElement("div");
+        icon.className = "floating";
+        icon.textContent = icons[Math.floor(Math.random() * icons.length)];
+        icon.style.left = Math.random() * 100 + "vw";
+        icon.style.fontSize = 24 + Math.random() * 24 + "px";
+        icon.style.animationDuration = 6 + Math.random() * 6 + "s";
+        icon.style.animationDelay = Math.random() * 5 + "s";
+        document.body.appendChild(icon);
+      }
+    </script>
   </body>
 </html>
